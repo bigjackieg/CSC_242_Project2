@@ -87,6 +87,40 @@ public class ModelCheckingTest {
     /************************************************
                  HORN CLAUSES TESTS
      ************************************************/
+    /*
+    Based on logic, it can be determined that the unicorn is magical and horned
+    however we cannot determine mythical
+    Based on http://www.cs.duke.edu/courses/spring06/cps102/assign/hw01-sol.pdf
+    */
+    @Test
+    public void inferNotImmortalTrue(){
+        ModelChecking test = new ModelChecking(new HornClausesKB());
+        Sentence notImm = new Negation(new Symbol("Nimm"));
+        Assert.assertTrue(test.entails(notImm));
+    }  
+     @Test
+    public void inferMammalTrue(){
+        ModelChecking test = new ModelChecking(new HornClausesKB());
+        Sentence Mam = (new Symbol("mam"));
+        Assert.assertTrue(test.entails(mam));
+    }
+    /*@Test
+    public void inferMythicalTrue(){
+        ModelChecking test = new ModelChecking(new HornClausesKB());
+        Sentence Myth = new Negation(new Symbol("myth"));
+        Assert.assertTrue(test.entails(Myth));
+    }*/
+    @Test
+     public void inferImmortalFalse(){
+        ModelChecking test = new ModelChecking(new HornClausesKB());
+        Sentence Imm = (new Symbol("imm"));
+        Assert.assertFalse(test.entails(Imm));
+    }  
+ 
+    
+    
+   
+     
 
 
 
